@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bài tập số 1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            h1 {
+                color: black;
+                text-align: center;
+            }
+            
+            p {
+                color: black;
+                text-align: center;
+            } 
+        </style>
+    </head>
+    
+    <body>
+        <h1>BÀI TẬP 1</h1>
+                
+        <p id="demo"></p>
+
+        <div style="text-align:center;">
+        <textarea name="myTextArea" id="myTextArea" cols="40" rows="10" placeholder="printText()">
+        </textarea>
+        </div>
+        
+    <script>
+    function printText() {
+    var text = document.getElementById("fname").value;
+    document.getElementById("myTextArea").innerHTML = text;
+    }
+    </script>
+    
+    <script>
+    function Color(obj) {
+    document.getElementById("myTextArea").style.color = obj.value;
+    }    
+    </script>
+        
+        Enter your character you want to color: <input type="text" id="fname">
+        <input type="button" onclick="printText()" value="Apply">
+    
+        <form action="action_page.php">
+            Select your favorite color:
+            <input type="color" onchange ="Color(this)">
+        </form>
+        
+    </body>
+</html>
