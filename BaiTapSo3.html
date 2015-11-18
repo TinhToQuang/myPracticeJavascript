@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bài tập số 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=400px, initial-scale=1.0">
+        <style>
+            h1 {
+                color: black;
+                text-align: center;
+            }
+            
+            p {
+                color: black;
+                text-align: left;
+            }
+
+            table, th, td {
+                border-collapse: collapse;
+                background-color: #ffffff;
+            }
+            
+            th, td {
+                text-align: center;
+                padding: 5px;
+            }
+            
+            th {
+                background: #d9d9d9
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <h1>BÀI TẬP 3</h1>
+        
+        <div align="center">
+        <p>Tên: <input id="fname1" type="text"></p>
+        <p>Giá trị: <input id="fname2" type="text"></p>
+        <p><button type="button" onclick="addNewUser()">Thêm</button></p>
+        
+        
+        <p id="demo"></p>
+        
+        <table id="addRow" style="width:100%">
+            <tr>
+                <th>Tên</th>
+                <th>Giá trị</th>		
+                <th>Thao tác</th>
+            </tr>
+        </table>        
+        
+        </div>
+        
+    <script>
+    function addNewUser() {
+       var table = document.getElementById("addRow");
+       var row = table.insertRow(1);
+       var cell1 = row.insertCell(0);
+       var cell2 = row.insertCell(1);
+       var cell3 = row.insertCell(2);
+       cell1.innerHTML = document.getElementById("fname1").value;
+       cell2.innerHTML = document.getElementById("fname2").value;
+       cell3.innerHTML = "<input id=\"Button\" type=\"button\" value=\"Bỏ\" onclick=\"getRidUser(this)\" />";
+       //cell3.innerHTML = "<button onclick="getRidUser()">Bỏ</button>"
+    }
+    
+    function getRidUser(del) {
+       var i = del.parentNode.parentNode.rowIndex;
+       document.getElementById("addRow").deleteRow(i);
+    }
+    </script>
+
+    </body>
+</html>
