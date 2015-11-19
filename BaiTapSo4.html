@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercise 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="content"></div>
+        <script>
+
+            var x = Date.now(), n = 10000;
+            
+            // TO DO
+            // This is a way to render time < 20ms, it run from 8ms - 15ms.
+            // I think there are many way, but this way I found first, I will find the different way.
+            var i, a = [];
+            for (i = 1; i <= n; a[i] = i++) {
+                a.push(i);
+            }
+            document.getElementById("content").innerHTML = a;
+            // END TO DO
+            
+            console.log("Time: "+ (Date.now() - x) + " ms");
+
+        </script>
+    </body>
+</html>
