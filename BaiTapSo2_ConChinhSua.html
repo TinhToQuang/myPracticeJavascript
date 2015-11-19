@@ -20,46 +20,17 @@ and open the template in the editor.
                 text-align: center;
                 width: 400px;
             }
-
-            .box {
-                width: 400px;
-                padding: 20px;
-            }
             
-            #overlay {
-            display: none;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            background: #999;
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
-            z-index: 100;
-        }
-        #popup {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 65%;
-            background: #fff;
-            width: 200px;
-            height: 200px;
-            margin-left: -200px; /*Half the value of width to center div*/
-            margin-top: -200px; /*Half the value of height to center div*/
-            z-index: 200;
-        }
-        #popupclose {
-            float: right;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .popupcontent {
-            padding: 70px;
-        }
-        #button {
-            cursor: pointer;
-        }
+            .popup{
+                display: none;
+                border: 1px solid;
+                background-color: white;
+                position: fixed;
+                top: 10%;
+                left: 35%;
+                width: 400px;
+                height: 200px
+            }
             
         </style>
     </head>
@@ -78,19 +49,60 @@ and open the template in the editor.
         
         </div>
         
-    <script>
+        <div id="popup"></div>
+        
+        <script>
+
     function printArray() {
     var n = document.getElementById("numb").value;
     var i;
 
     // If x is Not a Number or less than one or greater than 10
     for(i = 1;i <= n;i++){
+        if(i % 100 === 0) {
+        document.getElementById("demo").innerHTML += "<a href=\"#\" id=\"demo\">" + i + "</a>" + " ";
+    }
+    else {
         document.getElementById("demo").innerHTML += i + " ";
+    }
         
+    }
+    }
+    
+    (function() {
+    //bind displayPopup function to button
+    var b = document.getElementById("demo");
+    b.addEventListener("click", displayPopup, false);
+    
+    //Display Popup method - you can modify this to add parameters 
+    function displayPopup(event) {
+        //dynamically create a div, button, and inner text
+        var p = document.createElement('div'),
+            b = document.createElement('button'),
+            t = document.createTextNode("Text and stuff");
+        
+        //add popup class to newly created div
+        p.className += 'popup';
+        //Add text to close button element
+        b.innerHTML = "Close";
+        //Append text to popup div
+        p.appendChild(t);
+        //Bind click event to button element
+        b.onclick = closePopup;
+        //Append button to popup div, and append popup to document body
+        p.appendChild(b);
+        document.body.appendChild(p);
+              
+        p.style.display="block";
+        
+        //This function hides the popup
+        function closePopup(event){
+            p.style.display="none";
         }
     }
-
-</script>
-
+})();
+    
+        </script>
+        
     </body>
 </html>
