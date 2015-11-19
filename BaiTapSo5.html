@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Bài tập số 5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=400px, initial-scale=1.0">
+        <style>
+            h1 {
+                color: black;
+                text-align: center;
+            }
+            
+            p {
+                color: black;
+                text-align: center;
+                width: 400px;
+            }
+            
+            textarea.kq {
+                text-align: center;
+            }
+        </style>
+    </head>
+
+<body>
+    
+    <h1>BÀI TẬP 5</h1>
+    
+    <script>
+            function compute(form) {
+                if (confirm("Are you sure?"))
+                    form.result.value = eval(form.expr.value);
+                else
+                    alert("Please come back again.");
+            }
+    </script>
+    
+    
+<form>
+    <div style="text-align:center;">
+        Enter an expression:<br><br>
+    <input type="text" name="expr" size=20>
+    <input type="button" value="Calculate" ONCLICK="compute(this.form)"><br><br><br>
+
+    Result<br><br>
+        <textarea class="kq" name="result" id="myTextArea" cols="20" rows="5"></textarea>
+    </div>
+</form>
+</body>
+</html>
