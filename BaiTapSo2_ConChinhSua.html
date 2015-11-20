@@ -21,7 +21,8 @@ and open the template in the editor.
                 width: 400px;
             }
             
-            .popup{
+            #popup{
+                display: none;
                 height: 200px;
                 width: 400px;
                 position: fixed;
@@ -35,12 +36,12 @@ and open the template in the editor.
                 z-index: 1000;
             }
             
-            #overlay {
+            .overlay {
                 display: none;
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                background: #999;
+                background: #bfbfbf;
                 width: 100%;
                 height: 100%;
                 opacity: 0.8;
@@ -55,19 +56,18 @@ and open the template in the editor.
         
         <div align="center">
         <p>Input your number:</p>        
-        
-        
         <p><input id="numb" type="number"></p>
+        <p><button type="button" onclick="printArray()">Generate</button></p>
         
-        <div id="popup" class="popup">
-            <button type="button" onclick="closePopup('popup')">X</button><br>
-        </div>        
+            <div id="popup">
+                <button type="button" onclick="showAndClosePopup('popup')">X</button><br>
+            </div>
                 
         <p id="demo"></p>
         
-        <p><button type="button" onclick="printArray()">Generate</button></p>
-        
         </div>
+        
+        
         
         <script>
             function printArray() {
@@ -77,8 +77,7 @@ and open the template in the editor.
                 for(i = 1;i <= n;i++){
                     if(i % 100 === 0) {
                         document.getElementById("demo").innerHTML +=
-                                "<a href=\"#\" id=\"demo\" onclick=\"showPopup('popup')\">" + i + "</a>" + " ";
-                        document.getElementById("popup").innerHTML += i;
+                                "<a href=\"javascript:void(0)\" id=\"demo\" onclick=\"showAndClosePopup('popup')\">" + i + "</a>" + " ";
                     }
                     else {
                         document.getElementById("demo").innerHTML += i + " ";
@@ -86,18 +85,13 @@ and open the template in the editor.
                 }
             }
             
-                function showPopup(id) {
+                function showAndClosePopup(id) {
                     var p = document.getElementById(id);
-                    popup.style.display = 'block';
-                }
-                
-                //This function hides the popup
-                function closePopup(id){
-                    var p = document.getElementById(id);
-                    popup.style.display = 'none';
-                }
-    
-    
+                    if(p.style.display === 'block')
+                        p.style.display = 'none';
+                    else
+                        p.style.display = 'block';
+                }   
         </script>
         
     </body>
