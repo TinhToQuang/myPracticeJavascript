@@ -1,0 +1,66 @@
+BÀI TẬP 6
+Trình bày chi tiết từng dòng trong code HTML
+I.	Đây là đoạn code HTML cần được trình bày chi tiết:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    <body>
+        <div><script>
+            
+            <!—1-->
+            var A = function(){
+                this.object.x ++;
+            }, B = function(){
+                this.object.x += 2;
+            };
+            
+            <!—2-->
+            A.prototype = B.prototype = {
+                object : {
+                    x : 10
+                },
+                value : 7
+            };
+            
+            <!—3-->
+            var a = new A(), b = new B(), c = new B();
+            
+            <!—4-->
+            a.value += (b.object.x -= c.value) + b.object.x;
+            
+            document.write(a.value);
+        </script></div>
+    </body>
+</html>
+Đoạn code này cho ra kết quả là 23.
+
+II.	Giải thích:
+1.	Ngay phần đầu tiên của thẻ <script> là khởi tạo hai biến A, B theo kiểu function, trong đó:
+•	Ở biến A, là hàm tính “biến object.x của A hiện tại” tăng lên một đơn vị.
+•	Ở biến B, là hàm tính “biến object.y của B hiện tại” cộng 2.
+Lúc đó, A, B trở thành constructor.
+
+2.	Chúng ta khai báo các thành phần trong A, B và gán giá trị cho các thành phần của chúng bằng cách tạo prototype và cho 2 phototype bằng nhau:
+•	Mỗi A, B đều có hai thành phần con: object (chứa giá trị x được gán 10) và value (được gán bằng 7).
+•	Ở đây, cả hai biến A và B đều có các giá trị là object.x = 10 và value = 7.
+
+3.	Ta khởi tạo 3 biến a, b, c bằng cách gọi lần lượt các constructor A, B, C:
+•	Biến a được khởi tạo mới từ constructor A, biến b được khởi tạo mới từ constructor B, biến c được khởi tạo mới từ constructor C.
+•	Ta có constructor A là hàm tăng object.x lên 1 đơn vị (++) và constructor B là hàm có object.x cộng thêm 2 (+= 2).
+•	Theo thứ tự ưu tiên các toán tử, ta sẽ thực hiện toan tử ++ trước rồi mới đến +=.
+•	Ở đây, chúng ta thực hiện phép toán đồng nhất ở cả 3 biến a, b, c do ở bước 2; dẫn đến kết quả cả 3 biến a, b, c đều chung một giá trị: object.x = 15 và value = 7.
+
+4.	Ở bước này, ta thực hiện phép tính:
+
+a.value += (b.object.x -= c.value) + b.object.x;
+
+Theo thứ tự tính toán, ta sẽ tính trong dấu ngoặc trước và tính ở ngoài sau:
+•	b.object.x = b.object.x - c.value = 15 – 7 = 8.
+•	a.value = a.value + b.object.x = 15 + 8 = 23.
+
+Cuối cùng, ta in kết quả của a.value = 23 lên màn hình.
