@@ -36,9 +36,9 @@ and open the template in the editor.
                 z-index: 1000;
             }
             
-            .overlay {
+            #overlay {
                 display: none;
-                position: absolute;
+                position: fixed;
                 top: 0;
                 bottom: 0;
                 background: #bfbfbf;
@@ -46,6 +46,9 @@ and open the template in the editor.
                 height: 100%;
                 opacity: 0.8;
                 z-index: 100;
+                -webkit-box-shadow: 0 5px 80px #505050;
+                -moz-box-shadow: 0 5px 80px #505050;
+                box-shadow: 0 5px 80px #505050;
             }
             
         </style>
@@ -59,9 +62,14 @@ and open the template in the editor.
         <p><input id="numb" type="number"></p>
         <p><button type="button" onclick="printArray()">Generate</button></p>
         
+        
+        <div id="overlay">
             <div id="popup">
-                <button type="button" onclick="showAndClosePopup('popup')">X</button><br>
+                <button type="button" onclick="showAndClosePopup(' + i + ')">X</button><br>
             </div>
+        </div>
+        
+        
                 
         <p id="demo"></p>
         
@@ -73,11 +81,11 @@ and open the template in the editor.
             function printArray() {
                 var n = document.getElementById("numb").value;
                 var i;
-                // If x is Not a Number or less than one or greater than 10
+                
                 for(i = 1;i <= n;i++){
                     if(i % 100 === 0) {
                         document.getElementById("demo").innerHTML +=
-                                "<a href=\"javascript:void(0)\" id=\"demo\" onclick=\"showAndClosePopup('popup')\">" + i + "</a>" + " ";
+                                "<a href=\"javascript:void(0)\" id=\"demo\" onclick=\"showAndClosePopup(" + i + ")\">" + i + "</a>" + " ";
                     }
                     else {
                         document.getElementById("demo").innerHTML += i + " ";
@@ -85,13 +93,20 @@ and open the template in the editor.
                 }
             }
             
-                function showAndClosePopup(id) {
-                    var p = document.getElementById(id);
-                    if(p.style.display === 'block')
+                function showAndClosePopup(l) {
+                    var p = document.getElementById('popup');
+                    var o = document.getElementById('overlay');
+                    document.getElementById("popup").innerHTML = l;
+                    if(p.style.display === 'block') {
                         p.style.display = 'none';
-                    else
+                        o.style.display = 'none';
+                    }
+                    else {
                         p.style.display = 'block';
-                }   
+                        o.style.display = 'block';
+                    }   
+                }
+                
         </script>
         
     </body>
