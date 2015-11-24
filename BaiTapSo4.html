@@ -14,14 +14,14 @@
             // TO DO
             // This is a way to render time < 20ms, it run from 8ms - 15ms.
             // I think there are many way, but this way I found first, I will find the different way.
-            var i, a = [];
-            for (i = 1; i <= n; a[i] = i++) {
-                a.push(i);
+            for (var a = [], i = 1; i <= n;i++) {
+                a.push(i + " ");
             }
-            document.getElementById("content").innerHTML = a;
+            document.getElementById("content").innerHTML = a.join("");
+            
             // END TO DO
             
-            console.log("Time: "+ (Date.now() - x) + " ms");
+            console.log("Time: " + (Date.now() - x) + " ms");
 
         </script>
     </body>
